@@ -68,8 +68,8 @@ for name, clf in [('Logistic', LogisticRegression()),
                                                                     learning_rate=1.0,
                                                                     max_depth=1,
                                                                     random_state=4))]:
-    print(name, ': \n', classification_report(Y, clf.predict(X)))
     clf_score = sum([clf.fit(X.iloc[train], Y.iloc[train]).score(X.iloc[test],\
     Y.iloc[test]) for train, test in skf])/n_folds
+    print(name, ': \n', classification_report(Y, clf.predict(X)))
     scores.append((name, clf_score))
 
